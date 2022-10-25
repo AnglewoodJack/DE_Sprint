@@ -27,6 +27,8 @@ qbstyles = "^0.1.4"
 mplcyberpunk = "^0.6.0"
 sympy = "^1.11.1"
 seaborn = "^0.12.1"
+missingno = "^0.5.1"
+wordcloud = "^1.8.2"
 
 [tool.poetry.dev-dependencies]
 jupyter = "^1.0.0"

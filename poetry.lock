@@ -1319,6 +1319,23 @@ python-versions = ">=3.5"
 traitlets = "*"
 
 [[package]]
+name = "missingno"
+version = "0.5.1"
+description = "Missing data visualization module for Python."
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+matplotlib = "*"
+numpy = "*"
+scipy = "*"
+seaborn = "*"
+
+[package.extras]
+tests = ["pytest-mpl", "pytest"]
+
+[[package]]
 name = "mistune"
 version = "2.0.4"
 description = "A sane Markdown parser with useful plugins and renderers"
@@ -2508,10 +2525,23 @@ category = "dev"
 optional = false
 python-versions = ">=3.7"
 
+[[package]]
+name = "wordcloud"
+version = "1.8.2.2"
+description = "A little word cloud generator"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+matplotlib = "*"
+numpy = ">=1.6.1"
+pillow = "*"
+
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "cd3370d9ec6b6100444734391eb4d12783eeb41cb1e68f8e50e5ae47e479cc2f"
+content-hash = "ec5d62532060bbfcf2938afd2c6b841407b4824d2a212d05c0191ef02481f557"
 
 [metadata.files]
 ansi2html = []
@@ -2611,6 +2641,7 @@ lxml = []
 markupsafe = []
 matplotlib = []
 matplotlib-inline = []
+missingno = []
 mistune = []
 monotonic = []
 mplcyberpunk = []
@@ -2705,3 +2736,4 @@ webencodings = []
 websocket-client = []
 werkzeug = []
 widgetsnbextension = []
+wordcloud = []
