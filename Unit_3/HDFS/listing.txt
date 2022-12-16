@@ -1,0 +1,40 @@
+[docker-hadoop-spark-workbench] docker cp /Users/tvm/voyna-i-mir-tom-1.txt 259cd0f21f89:/                         master
+[docker-hadoop-spark-workbench] docker cp /Users/tvm/voyna-i-mir-tom-2.txt 259cd0f21f89:/                         master
+[docker-hadoop-spark-workbench] docker cp /Users/tvm/voyna-i-mir-tom-3.txt 259cd0f21f89:/                         master
+[docker-hadoop-spark-workbench] docker cp /Users/tvm/voyna-i-mir-tom-4.txt 259cd0f21f89:/                         master
+[docker-hadoop-spark-workbench] docker exec -it 259cd0f21f89 bash                         master
+root@259cd0f21f89:/# hadoop fs -mkdir -p /DE/
+root@259cd0f21f89:/# hadoop fs -put voyna-i-mir-tom-* /DE/
+root@259cd0f21f89:/# hdfs dfs -ls /DE/
+Found 4 items
+-rw-r--r--   3 root supergroup     736519 2022-12-16 13:43 /DE/voyna-i-mir-tom-1.txt
+-rw-r--r--   3 root supergroup     770324 2022-12-16 13:43 /DE/voyna-i-mir-tom-2.txt
+-rw-r--r--   3 root supergroup     843205 2022-12-16 13:43 /DE/voyna-i-mir-tom-3.txt
+-rw-r--r--   3 root supergroup     697960 2022-12-16 13:43 /DE/voyna-i-mir-tom-4.txt
+root@259cd0f21f89:/# hadoop fs -cat /DE/* | hadoop fs -appendToFile - /DE/voyna-i-mir.txt
+root@259cd0f21f89:/# hdfs dfs -ls /DE/
+Found 5 items
+-rw-r--r--   3 root supergroup     736519 2022-12-16 13:43 /DE/voyna-i-mir-tom-1.txt
+-rw-r--r--   3 root supergroup     770324 2022-12-16 13:43 /DE/voyna-i-mir-tom-2.txt
+-rw-r--r--   3 root supergroup     843205 2022-12-16 13:43 /DE/voyna-i-mir-tom-3.txt
+-rw-r--r--   3 root supergroup     697960 2022-12-16 13:43 /DE/voyna-i-mir-tom-4.txt
+-rw-r--r--   3 root supergroup    6080072 2022-12-16 13:46 /DE/voyna-i-mir.txt
+root@259cd0f21f89:/# hadoop fs -rm /DE/voyna-i-mir-tom-*
+Deleted /DE/voyna-i-mir-tom-1.txt
+Deleted /DE/voyna-i-mir-tom-2.txt
+Deleted /DE/voyna-i-mir-tom-3.txt
+Deleted /DE/voyna-i-mir-tom-4.txt
+root@259cd0f21f89:/# hdfs dfs -ls /DE/
+Found 1 items
+-rw-r--r--   3 root supergroup    6080072 2022-12-16 13:46 /DE/voyna-i-mir.txt
+root@259cd0f21f89:/# hadoop fs -chmod 755 /DE/*
+root@259cd0f21f89:/# hdfs dfs -ls /DE/
+Found 1 items
+-rwxr-xr-x   3 root supergroup    6080072 2022-12-16 13:46 /DE/voyna-i-mir.txt
+root@259cd0f21f89:/# hadoop fs -du -h /DE/
+5.8 M  /DE/voyna-i-mir.txt
+root@259cd0f21f89:/# hadoop fs -setrep -w 2 /DE/
+Replication 2 set: /DE/voyna-i-mir.txt
+Waiting for /DE/voyna-i-mir.txt .............................^C TAKES FOREVER TO COMPLETE
+root@259cd0f21f89:/# hadoop fs -cat /DE/voyna-i-mir.txt | wc -l
+20535
