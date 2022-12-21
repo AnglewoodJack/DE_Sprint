@@ -128,3 +128,12 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Airflow
+Unit_3/Airflow/logs
+Unit_3/Airflow/plugins
+Unit_3/Airflow/Dockerfile
+Unit_3/Airflow/exec_sql.py
+Unit_3/Airflow/requirements.txt
+Unit_3/Airflow/dags/first_dag.py
+Unit_3/Airflow/dags/second_dag.py
